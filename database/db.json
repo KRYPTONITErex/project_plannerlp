@@ -1,0 +1,45 @@
+
+{
+    "myfriends": [
+        {
+            "id": 1,
+            "name": "Soe Seeseim",
+            "liveIn": "Finland"
+        },
+        {
+            "id": 2,
+            "name": "Warain Soe",
+            "liveIn": "Thailand"
+        },
+        {
+            "id": 3,
+            "name": "Kyi Lai Shwun",
+            "liveIn": "Singapore"
+        },
+        {
+            "id": 4,
+            "name": "Thet Htar Thu Zar",
+            "liveIn": "Singapore"
+        },
+        {
+            "id": 5,
+            "name": "PPA",
+            "workIn": "JD"
+        },
+        {
+            "id": 6,
+            "name": "ZKPH",
+            "workIn": "Changan"
+        },
+        {
+            "id": 7,
+            "name": "MaEiM",
+            "workIn": "Kioti"
+        },
+        {
+            "id": 8,
+            "name": "SHA",
+            "workIn": "PiEis"
+        }
+    ]
+}
