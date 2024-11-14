@@ -1,12 +1,12 @@
 <template>
-    <div class="friends">
+    <div class="friends" :class="{stillThere:project.stillThere}">
       <div class="friend-info" >
         <div class="header" >
           <h3 id="info" @click="showDetail=!showDetail">{{ project.name }} =></h3>
           <div class="icon-container">
             <span class="material-icons" @click="deleteProject">delete</span>
             <span class="material-icons">edit</span>
-            <span class="material-icons">check</span>
+            <span @click="stillORnot" class="material-icons">check</span>
           </div>
         </div>
       </div>
@@ -16,6 +16,7 @@
         <span><strong>Works in:</strong> {{ project.workIn }}</span>
       </div>
       <br>
+        <span><strong>StillThere :</strong> {{ project.stillThere }}</span>
     </div>
   </template>
   
@@ -39,6 +40,27 @@
             console.log(err);
         })
         // console.log(this.api+this.project.id)
+      },
+      stillORnot(){
+        let updateStatus = this.api+this.project.id;
+        // console.log(updateStatus)
+        fetch(updateStatus,{
+          method:"PATCH",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify(
+            {
+              stillThere:!this.project.stillThere
+            }
+          )
+        })
+        .then(()=>{
+            this.$emit("stillT",this.project.id)
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
       }
     }
   };
@@ -47,7 +69,7 @@
   <style>
   .friends {
   background-color: rgb(28, 97, 104);
-  margin: 20px auto; /* Center horizontally */
+  margin: 20px auto; 
   padding: 20px;
   border-radius: 15px;
   border-top-left-radius: 0px;
@@ -55,7 +77,7 @@
   width: 500px;
   color: rgb(235, 247, 255);
   border-left: 10px solid #ff6201;
-}
+  }
   
   .friend-info {
     text-align: left;
@@ -109,4 +131,9 @@
     color: rgb(254, 85, 85);
     cursor: pointer;
 }
+
+.friends.stillThere{
+  border-left: 10px solid rgb(190, 251, 7);
+}
+
   </style>

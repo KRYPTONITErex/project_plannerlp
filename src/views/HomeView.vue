@@ -4,7 +4,7 @@
     <h1> THIS is HOME VIEW , OK ?</h1>
 
     <div v-for="project in projects" :key="project.id" >
-        <FriComponent :project="project" @delete="deleteProj"></FriComponent>
+        <FriComponent :project="project" @delete="deleteProj" @stillT="stillT"></FriComponent>
     </div>
 
   </div>
@@ -42,6 +42,12 @@ export default {
       this.projects=this.projects.filter(project=>{
         return project.id!=id;
       })
+    },
+    stillT(id){
+      let findproj = this.projects.find(project=>{
+        return project.id===id;
+      });
+      findproj.stillThere=!findproj.stillThere
     }
   }
 }
