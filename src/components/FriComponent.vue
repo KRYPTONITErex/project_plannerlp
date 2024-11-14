@@ -4,7 +4,7 @@
         <div class="header" >
           <h3 id="info" @click="showDetail=!showDetail">{{ project.name }} =></h3>
           <div class="icon-container">
-            <span class="material-icons">delete</span>
+            <span class="material-icons" @click="deleteProject">delete</span>
             <span class="material-icons">edit</span>
             <span class="material-icons">check</span>
           </div>
@@ -25,8 +25,22 @@
     data() {
       return {
         showDetail: false,
+        api: 'http://localhost:3000/myfriends/'
       };
     },
+    methods: {
+      deleteProject(){
+        let deleteRoute = this.api+this.project.id;
+        fetch(deleteRoute,{method:"DELETE"})
+        .then(()=>{
+            this.$emit('delete',this.project.id)
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+        // console.log(this.api+this.project.id)
+      }
+    }
   };
   </script>
   
